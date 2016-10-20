@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body ng-controller="ApiConfigController">
+		<form ng-submit="saveApiConfig()" style="padding: 20px;">
+			<input it-input class="form-control floating-label" type="text" name="apiInput" ng-minlength="0" ng-maxlength="1000" required="" it-label="API URL" ng-model="apiInput">
+		</form>
+	</body>
+</html>

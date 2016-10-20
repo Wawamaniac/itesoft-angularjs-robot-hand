@@ -1,51 +1,19 @@
 'use strict';
 
-angular.module('MusicManager').config(['$routeProvider',
+angular.module('robot.manager').config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider
-            .when('/music/poprock', {
-                templateUrl: 'app/features/music/poprock/poprockView.html',
-                controller: 'PoprockController',
-                title: 'MUSIC.POPROCK.TITLE',
-                resolve: {
-                    translationPart: [ 'TranslationService',function(TranslationService){
-                       return TranslationService('poprock');
-                    }]
-                }
+            .when('/api/config', {
+                templateUrl: 'app/features/api/config/configView.html',
+                controller: 'ApiConfigController',
+                title: 'API Configuration'
             })
-            .when('/music/dance', {
-                templateUrl: 'app/features/music/dance/danceView.html',
-                controller: 'DanceController',
-                title: 'MUSIC.DANCE.TITLE',
-                resolve: {
-                    translationPart: [ 'TranslationService',function(TranslationService){
-                        return TranslationService('dance');
-                    }]
-                }
-            })
-            .when('/playlist', {
-                templateUrl: 'app/features/playlist/playlistView.html',
-                controller: 'PlaylistController',
-                title: 'PLAYLIST.TITLE',
-                resolve: {
-                    translationPart : [ 'TranslationService',function(TranslationService){
-                        return TranslationService('playlist');
-                    }]
-                }
-            })
-            .when('/reader', {
-                templateUrl: 'app/features/reader/readerView.html',
-                controller: function(){
-
-                },
-                title: 'MUSIC.READER.TITLE',
-                resolve: {
-                    translationPart : [ 'TranslationService',function(TranslationService){
-                        return TranslationService('reader');
-                    }]
-                }
+            .when('/robot/hand', {
+                templateUrl: 'app/features/robot/hand/handView.html',
+                controller: 'HandController',
+                title: 'Hand Controller'
             })
             .otherwise({
-                redirectTo: '/music/poprock'
+                redirectTo: '/api/config'
             });
     }]);

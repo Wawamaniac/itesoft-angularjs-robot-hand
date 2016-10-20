@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="UTF-8">
+    </head>
+    <body ng-controller="HandController">
+        <div class="container-fluid">
+            <h1>Hand Parameters</h1>
+
+            <div>
+                <robot-hand editable="true" hand-model="hand" scale="1"></robot-hand>
+                <button class="btn btn-primary" ng-click="openHand()" style="margin-top: 20px;">Open hand</button>
+                <button class="btn btn-primary" ng-click="closeHand()" style="margin-top: 20px;">Close hand</button>
+            </div>
+            <br/>
+            <div>
+                <button class="btn btn-primary" ng-click="addHandConfigToPlaylist()">Add to playlist</button>
+            </div>
+
+            <h1>
+            Playlist
+            <button class="btn btn-primary" ng-click="playPlaylist()" style="margin-left: 20px;">Play !</button>
+            <button class="btn btn-primary" ng-click="savePlaylist(application.playlist)" style="margin-left: 20px;">Save</button>
+            <input it-input class="form-control floating-label" type="text" name="playlistStepTime" ng-minlength="1" ng-maxlength="100" required="true" it-label="Step time (ms)" ng-model="application.stepTime">
+            </h1>
+            
+            <ul ui-sortable ng-model="application.playlist">
+                <li style="display: inline-block; margin-right: 25px; margin-top: 10px; background-color: #FCFCFC; padding: 10px;" ng-repeat="step in application.playlist">
+                    <robot-hand editable="false" hand-model="step.hand" scale="0.75"></robot-hand>
+                    <button class="btn btn-primary" ng-click="deleteStep(step)" style="margin-top: 20px;">Delete</button>
+                </li>
+            </ul>
+
+            <h1>
+            Saved playlists
+            </h1>
+            
+            <div>
+                <ul ng-repeat="savedPlaylist in application.savedPlaylists">
+                    <h2>
+                    {{savedPlaylist.name}}
+                    <button class="btn btn-primary" ng-click="selectPlaylist(savedPlaylist)" style="margin-left: 20px;">Select playlist</button>
+                    <button class="btn btn-primary" ng-click="deletePlaylist(savedPlaylist)" style="margin-left: 20px;">Delete playlist</button>
+                    </h2>
+                    <li style="display: inline-block; margin-right: 25px; background-color: #FCFCFC; padding: 10px;" ng-repeat="step in savedPlaylist.playlist">
+                        <robot-hand editable="false" hand-model="step.hand" scale="0.5"></robot-hand>
+                    </li>
+                </ul>
+            </div>
+    	</div>
+    </body>
+</html>
